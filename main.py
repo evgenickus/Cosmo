@@ -8,7 +8,6 @@ from kivy.properties import NumericProperty
 import random, time
 from kivy.graphics import Mesh
 
-
 class MainWidget(RelativeLayout):
     stars = list()
     stars1 = list()
@@ -44,7 +43,7 @@ class MainWidget(RelativeLayout):
     STAR2_NB = 0#500
     STAR3_NB = 0#100
     STAR4_NB = 0#10
-    STAR5_NB = 1
+    STAR5_NB = 1#10
 
 
     direction = True
@@ -120,8 +119,8 @@ class MainWidget(RelativeLayout):
             s = random.randint(1, 4)
             self.stars3_coordinats.append((x, y, s))
         for i in range(len(self.stars4)):
-            x1 = random.randint(-200, 200)
-            y1 = random.randint(-100, 100)
+            x1 = random.randint(-700, 700)
+            y1 = random.randint(-600, 600)
             self.stars4_coordinats.append((x1, y1))
         for i in range(len(self.stars5)):
             x1 = random.randint(-200, 200)
@@ -170,16 +169,36 @@ class MainWidget(RelativeLayout):
         for i in range(len(self.stars5)):
             x1, y1  = (self.perspective_point_x + self.stars5_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars5_coordinats[i][1]) + i * 10
             self.stars5[i].vertices = [
-            x1-1*alfa, y1+10*alfa, 0, 0, #0
-            x1-11*alfa, y1+11*alfa, 0, 0, #1
-            x1-1*alfa, y1+12*alfa, 0, 0, # 2
-            x1, y1+22*alfa, 0, 0,        # 3
-            x1+1*alfa, y1+12*alfa, 0, 0, # 4
-            x1+11*alfa, y1+11*alfa, 0, 0, # 5
-            x1+1*alfa, y1+10*alfa, 0, 0, #6
-            x1, y1, 0, 0, #7
+            x1-20, y1+115, 0, 0, #1
+            x1-60, y1+160, 0, 0, #2
+            x1-10, y1+120, 0, 0, #3
+            x1, y1+220, 0, 0, #4
+            x1+10, y1+120, 0, 0, #5
+            x1+60, y1+160, 0, 0, #6
+            x1+20, y1+115, 0, 0, #7
+            x1+110, y1+110, 0, 0, #8
+            x1+20, y1+100, 0, 0, #9
+            x1+60, y1+60, 0, 0, #10
+            x1+10, y1+90, 0, 0, #11
+            x1, y1, 0, 0, #12
+            x1-10, y1+90, 0, 0, #13
+            x1-60, y1+60, 0, 0, #14
+            x1-20, y1+100, 0, 0, #15
+            x1-110, y1+110, 0, 0, #0
+
+
+
+
+
+
+
+
+
+
+
+            
             ]
-            self.stars5[i].indices = [0, 1, 2, 3, 4, 5, 6, 7]
+            self.stars5[i].indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
     def update(self, dt):
         self.update_stars()
