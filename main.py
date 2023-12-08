@@ -38,12 +38,12 @@ class MainWidget(RelativeLayout):
     star5_x = 2
     star5_y = 2
 
-    STAR_NB = 0#200
-    STAR1_NB = 0#50
-    STAR2_NB = 0#500
-    STAR3_NB = 0#100
-    STAR4_NB = 0#10
-    STAR5_NB = 1#10
+    STAR_NB = 200#200
+    STAR1_NB = 50#50
+    STAR2_NB = 5000#500
+    STAR3_NB = 100#100
+    STAR4_NB = 80#10
+    STAR5_NB = 80#10
 
 
     direction = True
@@ -101,34 +101,34 @@ class MainWidget(RelativeLayout):
 
     def generate_stars_coordinate(self):
         for i in range(len(self.stars)):
-            x = random.randint(-700, 700)
-            y = random.randint(-600, 600)
+            x = random.randint(-1400, 1400)
+            y = random.randint(-1200, 1200)
             self.stars_coordinats.append((x, y))
         for i in range(len(self.stars1)):
-            x = random.randint(-700, 700)
-            y = random.randint(-600, 600)
+            x = random.randint(-1400, 1400)
+            y = random.randint(-1200, 1200)
             self.stars1_coordinats.append((x, y))
         for i in range(len(self.stars2)):
-            x = random.randint(-700, 700)
-            y = random.randint(-600, 600)
+            x = random.randint(-1400, 1400)
+            y = random.randint(-1200, 1200)
             s = random.randint(1, 4)
             self.stars2_coordinats.append((x, y, s))
         for i in range(len(self.stars3)):
-            x = random.randint(-700, 700)
-            y = random.randint(-600, 600)
-            s = random.randint(1, 4)
+            x = random.randint(-1400, 1400)
+            y = random.randint(-1200, 1200)
+            s = random.randint(2, 6)
             self.stars3_coordinats.append((x, y, s))
         for i in range(len(self.stars4)):
-            x1 = random.randint(-700, 700)
-            y1 = random.randint(-600, 600)
-            self.stars4_coordinats.append((x1, y1))
+            x = random.randint(-700, 700)
+            y = random.randint(-400, 400)
+            self.stars4_coordinats.append((x, y))
         for i in range(len(self.stars5)):
-            x1 = random.randint(-200, 200)
-            y1 = random.randint(-100, 100)
-            self.stars5_coordinats.append((x1, y1))
+            x = random.randint(-700, 700)
+            y = random.randint(-400, 400)
+            self.stars5_coordinats.append((x, y))
 
     def update_stars(self):
-        alfa = 10
+        alfa = .75
         for i in range(len(self.stars)):
             r = random.randint(0, 1)
             x, y = self.perspective_point_x + self.stars_coordinats[i][0], self.perspective_point_y + self.stars_coordinats[i][1]
@@ -169,34 +169,22 @@ class MainWidget(RelativeLayout):
         for i in range(len(self.stars5)):
             x1, y1  = (self.perspective_point_x + self.stars5_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars5_coordinats[i][1]) + i * 10
             self.stars5[i].vertices = [
-            x1-20, y1+115, 0, 0, #1
-            x1-60, y1+160, 0, 0, #2
-            x1-10, y1+120, 0, 0, #3
-            x1, y1+220, 0, 0, #4
-            x1+10, y1+120, 0, 0, #5
-            x1+60, y1+160, 0, 0, #6
-            x1+20, y1+115, 0, 0, #7
-            x1+110, y1+110, 0, 0, #8
-            x1+20, y1+100, 0, 0, #9
-            x1+60, y1+60, 0, 0, #10
-            x1+10, y1+90, 0, 0, #11
+            x1-2*alfa, y1+10*alfa, 0, 0, #15
+            x1-11*alfa, y1+11*alfa, 0, 0, #0
+            x1-2*alfa, y1+11.5*alfa, 0, 0, #1
+            x1-6*alfa, y1+16*alfa, 0, 0, #2
+            x1-1*alfa, y1+12*alfa, 0, 0, #3
+            x1, y1+22*alfa, 0, 0, #4
+            x1+1*alfa, y1+12*alfa, 0, 0, #5
+            x1+6*alfa, y1+16*alfa, 0, 0, #6
+            x1+2*alfa, y1+11.5*alfa, 0, 0, #7
+            x1+11*alfa, y1+11*alfa, 0, 0, #8
+            x1+2*alfa, y1+10*alfa, 0, 0, #9
+            x1+6*alfa, y1+6*alfa, 0, 0, #10
+            x1+1*alfa, y1+9*alfa, 0, 0, #11
             x1, y1, 0, 0, #12
-            x1-10, y1+90, 0, 0, #13
-            x1-60, y1+60, 0, 0, #14
-            x1-20, y1+100, 0, 0, #15
-            x1-110, y1+110, 0, 0, #0
-
-
-
-
-
-
-
-
-
-
-
-            
+            x1-1*alfa, y1+9*alfa, 0, 0, #13
+            x1-6*alfa, y1+6*alfa, 0, 0, #14
             ]
             self.stars5[i].indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
