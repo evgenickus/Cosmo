@@ -38,12 +38,12 @@ class MainWidget(RelativeLayout):
     star5_x = 2
     star5_y = 2
 
-    STAR_NB = 200#200
-    STAR1_NB = 50#50
-    STAR2_NB = 5000#500
-    STAR3_NB = 100#100
-    STAR4_NB = 80#10
-    STAR5_NB = 80#10
+    STAR_NB = 00#200
+    STAR1_NB = 0#50
+    STAR2_NB = 000#500
+    STAR3_NB = 00#100
+    STAR4_NB = 0#10
+    STAR5_NB = 1#10
 
 
     direction = True
@@ -101,21 +101,21 @@ class MainWidget(RelativeLayout):
 
     def generate_stars_coordinate(self):
         for i in range(len(self.stars)):
-            x = random.randint(-1400, 1400)
-            y = random.randint(-1200, 1200)
+            x = random.randint(0, 1900)
+            y = random.randint(0, 1210)
             self.stars_coordinats.append((x, y))
         for i in range(len(self.stars1)):
-            x = random.randint(-1400, 1400)
-            y = random.randint(-1200, 1200)
+            x = random.randint(0, 1900)
+            y = random.randint(0, 1210)
             self.stars1_coordinats.append((x, y))
         for i in range(len(self.stars2)):
-            x = random.randint(-1400, 1400)
-            y = random.randint(-1200, 1200)
+            x = random.randint(0, 1900)
+            y = random.randint(0, 1210)
             s = random.randint(1, 4)
             self.stars2_coordinats.append((x, y, s))
         for i in range(len(self.stars3)):
-            x = random.randint(-1400, 1400)
-            y = random.randint(-1200, 1200)
+            x = random.randint(0, 1900)
+            y = random.randint(0, 1210)
             s = random.randint(2, 6)
             self.stars3_coordinats.append((x, y, s))
         for i in range(len(self.stars4)):
@@ -128,10 +128,10 @@ class MainWidget(RelativeLayout):
             self.stars5_coordinats.append((x, y))
 
     def update_stars(self):
-        alfa = .75
+        alfa = 20
         for i in range(len(self.stars)):
             r = random.randint(0, 1)
-            x, y = self.perspective_point_x + self.stars_coordinats[i][0], self.perspective_point_y + self.stars_coordinats[i][1]
+            x, y = self.stars_coordinats[i][0], self.stars_coordinats[i][1]
             if r == 1:
                 self.stars[i].ellipse = (x, y, self.star_x + r, self.star_y + r)
             else:
@@ -139,54 +139,58 @@ class MainWidget(RelativeLayout):
 
         for i in range(len(self.stars1)):
             r = random.randint(0, 1)
-            x, y = self.perspective_point_x + self.stars1_coordinats[i][0], self.perspective_point_y + self.stars1_coordinats[i][1]
+            x, y = self.stars1_coordinats[i][0], self.stars1_coordinats[i][1]
             if r == 1:
                 self.stars1[i].ellipse = (x+self.SPEED_X, y+self.SPEED_Y, self.star1_x + r, self.star1_y + r)
             else:
                 self.stars1[i].ellipse = (x+self.SPEED_X, y+self.SPEED_Y, self.star1_x + r/2, self.star1_y + r/2)
         for i in range(len(self.stars2)):
-            x, y, s = self.perspective_point_x + self.stars2_coordinats[i][0], self.perspective_point_y + self.stars2_coordinats[i][1], self.stars2_coordinats[i][2]
+            x, y, s = self.stars2_coordinats[i][0], self.stars2_coordinats[i][1], self.stars2_coordinats[i][2]
             self.stars2[i].ellipse = (x, y, self.star2_x + s/5, self.star2_y + s/5)
         for i in range(len(self.stars3)):
-            x, y, s = self.perspective_point_x + self.stars3_coordinats[i][0], self.perspective_point_y + self.stars3_coordinats[i][1], self.stars3_coordinats[i][2]
+            x, y, s = self.stars3_coordinats[i][0], self.stars3_coordinats[i][1], self.stars3_coordinats[i][2]
             self.stars3[i].pos = (x, y)#, self.star2_x, self.star2_y)
             self.stars3[i].size = (self.star3_x + s, self.star3_y + s)
 
         for i in range(len(self.stars4)):
-            x1, y1  = (self.perspective_point_x + self.stars4_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars4_coordinats[i][1]) + i * 10
+            # x1, y1  = (self.perspective_point_x + self.stars4_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars4_coordinats[i][1]) + i * 10
+            x1, y1 = 500, 200
+            
             self.stars4[i].vertices = [
             x1-1*alfa, y1+12*alfa, 0, 0,
             x1, y1+22*alfa, 0, 0,
-            x1+1*alfa, y1+10*alfa, 0, 0,
+            x1+1*alfa, y1+12*alfa, 0, 0,
             x1+11*alfa, y1+11*alfa, 0, 0,
-            x1-1*alfa, y1+10*alfa, 0, 0,
-            x1, y1, 0, 0,
             x1+1*alfa, y1+10*alfa, 0, 0,
+            x1, y1, 0, 0,
+            x1-1*alfa, y1+10*alfa, 0, 0,
             x1-11*alfa, y1+11*alfa, 0, 0,
             ]
             self.stars4[i].indices = [0, 1, 2, 3, 4, 5, 6, 7]
 
         for i in range(len(self.stars5)):
-            x1, y1  = (self.perspective_point_x + self.stars5_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars5_coordinats[i][1]) + i * 10
+            # x1, y1  = (self.perspective_point_x + self.stars5_coordinats[i][0]) + i * 10, (self.perspective_point_y + self.stars5_coordinats[i][1]) + i * 10
+            x1, y1 = 500, 200
             self.stars5[i].vertices = [
-            x1-2*alfa, y1+10*alfa, 0, 0, #15
-            x1-11*alfa, y1+11*alfa, 0, 0, #0
-            x1-2*alfa, y1+11.5*alfa, 0, 0, #1
-            x1-6*alfa, y1+16*alfa, 0, 0, #2
-            x1-1*alfa, y1+12*alfa, 0, 0, #3
-            x1, y1+22*alfa, 0, 0, #4
-            x1+1*alfa, y1+12*alfa, 0, 0, #5
-            x1+6*alfa, y1+16*alfa, 0, 0, #6
-            x1+2*alfa, y1+11.5*alfa, 0, 0, #7
-            x1+11*alfa, y1+11*alfa, 0, 0, #8
-            x1+2*alfa, y1+10*alfa, 0, 0, #9
-            x1+6*alfa, y1+6*alfa, 0, 0, #10
             x1+1*alfa, y1+9*alfa, 0, 0, #11
             x1, y1, 0, 0, #12
             x1-1*alfa, y1+9*alfa, 0, 0, #13
             x1-6*alfa, y1+6*alfa, 0, 0, #14
+            x1-2*alfa, y1+10*alfa, 0, 0, #15
+            x1-11*alfa, y1+11*alfa, 0, 0, #0
+            x1-2*alfa, y1+12*alfa, 0, 0, #1
+            x1-6*alfa, y1+16*alfa, 0, 0, #2
+            x1-1*alfa, y1+13*alfa, 0, 0, #3
+            x1, y1+22*alfa, 0, 0, #4
+            x1+1*alfa, y1+13*alfa, 0, 0, #5
+            x1+6*alfa, y1+16*alfa, 0, 0, #6
+            x1+2*alfa, y1+12*alfa, 0, 0, #7
+            x1+11*alfa, y1+11*alfa, 0, 0, #8
+            x1+2*alfa, y1+10*alfa, 0, 0, #9
+            x1+6*alfa, y1+6*alfa, 0, 0, #10
+
             ]
-            self.stars5[i].indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+            self.stars5[i].indices = [0, 1, 2]#, 3]#, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
     def update(self, dt):
         self.update_stars()
